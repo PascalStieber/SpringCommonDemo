@@ -1,0 +1,40 @@
+version: '3'
+services:
+  eureka:
+    build: ./eureka
+    networks:
+    - mynetwork
+    ports:
+    - 8761:8761
+  oauth2:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
+    build: ./oauth2
+    networks:
+    - mynetwork
+    ports:
+    - 8585:8585
+  zuul:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
+    build: ./zuul
+    networks:
+    - mynetwork
+    ports:
+    - 9999:9999
+  client:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
+    build: ./client
+    networks:
+    - mynetwork
+    depends_on:
+    - eureka
+    - oauth2
+    - zuul
+networks:
+  mynetwork:
+    driver: bridge

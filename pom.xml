@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>SpringCommonDemo</groupId>
+	<artifactId>SpringCommonDemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<packaging>pom</packaging>
+	<modules>
+		<module>eureka</module>
+		<module>client</module>
+		<module>zuul</module>
+		<module>oauth2</module>
+	</modules>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.0.1</version>
+				<configuration>
+<!-- 					<imageName>example</imageName> -->
+<!-- 					<baseImage>java</baseImage> -->
+<!-- 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint> -->
+					<!-- copy the service's jar file from target into the root directory 
+						of the image -->
+<!-- 					<resources> -->
+<!-- 						<resource> -->
+<!-- 							<targetPath>/</targetPath> -->
+<!-- 							<directory>${project.build.directory}</directory> -->
+<!-- 							<include>${project.build.finalName}.jar</include> -->
+<!-- 						</resource> -->
+<!-- 					</resources> -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
