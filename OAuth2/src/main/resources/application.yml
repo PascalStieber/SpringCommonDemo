@@ -4,6 +4,7 @@ spring:
 server:
     contextPath: /secret
     port: 8585
+    use-forward-headers: true
 eureka:
   instance:
     prefer-ip-address: true

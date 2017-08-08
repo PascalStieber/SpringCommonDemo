@@ -1,2 +1,6 @@
 com\example\EurekaClientApplication.class
+com\example\SsoFilter$NoopAuthenticationManager.class
+com\example\SsoFilter$1.class
+com\example\SsoFilter.class
+com\example\EurekaClientApplication$1.class
 com\example\WebController.class

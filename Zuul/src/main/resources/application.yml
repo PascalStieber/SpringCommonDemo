@@ -19,7 +19,9 @@ eureka:
       defaultZone: http://eureka:8761/eureka/
 zuul:
   sensitive-headers:
-#  routes:
-#    client:
-#      path: /login
-#      url: http://${ENV_HOST}:8585/secret/login
+  strip-prefix: false
+  ignore-security-headers: false
+  routes:
+    client:
+      path: /securedPage
+      url: http://${ENV_HOST}:9999/client/securedPage2
