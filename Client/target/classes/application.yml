@@ -56,3 +56,5 @@ security:
       user-authorization-uri: http://${ENV_HOST}:8585/secret/oauth/authorize
     resource:
       user-info-uri: http://${ENV_HOST}:8585/secret/user/me
+      jwt:
+        key-uri: http://${ENV_HOST}:8585/secret/oauth/token_key
