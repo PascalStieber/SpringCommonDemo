@@ -1,7 +1,7 @@
-/target/
-.apt_generated
-.classpath
+target/
+.apt_generated/
+.settings/
+.mvn/
 .factorypath
+.classpath
 .project
-.settings
-.mvn
