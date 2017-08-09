@@ -1,8 +1,10 @@
 target/
+bin/
 .apt_generated/
 .settings/
 .mvn/
 .factorypath
 .classpath
 .project
+.classpath
 .springBeans
