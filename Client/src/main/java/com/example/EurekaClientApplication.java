@@ -32,61 +32,62 @@ import org.springframework.web.context.request.RequestContextListener;
 @EnableDiscoveryClient
 public class EurekaClientApplication extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	OAuth2ClientContext oauth2ClientContext;
+    @Autowired
+    OAuth2ClientContext oauth2ClientContext;
 
-	@Override
-	public void configure(HttpSecurity http) throws Exception {
-	
-		http.antMatcher("/**").authorizeRequests().antMatchers("/").permitAll().anyRequest()
-				.authenticated();
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
 
-		http.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
-	}
+        http.antMatcher("/**").authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated();
 
-	@Autowired
-	OAuth2ProtectedResourceDetails resourceDetails;
-	@Autowired
-	OAuth2ClientContext OAuth2ClientContext;
+        http.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+    }
 
-	@Autowired
-	ResourceServerProperties resourceServerProperties;
+    
+    @Autowired
+    OAuth2ProtectedResourceDetails resourceDetails;
+    @Autowired
+    OAuth2ClientContext            OAuth2ClientContext;
 
-	private Filter ssoFilter() {
-//		OAuth2ClientAuthenticationProcessingFilter oAuuth2Filter = new OAuth2ClientAuthenticationProcessingFilter(
-//				"/securedPage");
-		SsoFilter oAuth2Filter = new SsoFilter("/securedPage");
-		OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, OAuth2ClientContext);
-		oAuth2Filter.setRestTemplate(restTemplate);
-		UserInfoTokenServices tokenServices = new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(),
-				resourceServerProperties.getClientId());
-		tokenServices.setRestTemplate(restTemplate);
-		oAuth2Filter.setTokenServices(tokenServices);
-		
-		oAuth2Filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler() {
-		    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-		        this.setDefaultTargetUrl("http://192.168.99.101:9999/client/securedPage2");
-		        super.onAuthenticationSuccess(request, response, authentication);
-		    }
-		});
-		return oAuth2Filter;
-	}
+    @Autowired
+    ResourceServerProperties       resourceServerProperties;
 
-	@Bean
-	public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
-		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setFilter(filter);
-		registration.setOrder(-100);
-		return registration;
-	}
+    private Filter ssoFilter() {
+        // OAuth2ClientAuthenticationProcessingFilter oAuuth2Filter = new OAuth2ClientAuthenticationProcessingFilter(
+        // "/securedPage");
+        SsoFilter oAuth2Filter = new SsoFilter("/securedPage");
+        OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, OAuth2ClientContext);
+        oAuth2Filter.setRestTemplate(restTemplate);
+        UserInfoTokenServices tokenServices = new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(), resourceServerProperties.getClientId());
+        tokenServices.setRestTemplate(restTemplate);
+        oAuth2Filter.setTokenServices(tokenServices);
 
-	@Bean
-	public RequestContextListener requestContextListener() {
-		return new RequestContextListener();
-	}
+        oAuth2Filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler() {
+            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+                    throws IOException, ServletException {
+                this.setDefaultTargetUrl("http://192.168.99.101:9999/client/securedPage2");
+//                this.setDefaultTargetUrl("http://localhost:9999/client/securedPage2");
+                super.onAuthenticationSuccess(request, response, authentication);
+            }
+        });
+        return oAuth2Filter;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(EurekaClientApplication.class, args);
-	}
+    @Bean
+    public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(filter);
+        registration.setOrder(-100);
+        return registration;
+    }
+
+    @Bean
+    public RequestContextListener requestContextListener() {
+        return new RequestContextListener();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaClientApplication.class, args);
+    }
 
 }

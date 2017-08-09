@@ -29,6 +29,8 @@ security:
       user-authorization-uri: http://localhost:8585/secret/oauth/authorize
     resource:
       user-info-uri: http://localhost:8585/secret/user/me
+      jwt:
+        key-uri: http://localhost:8585/secret/oauth/token_key
 logging:
   level:
     org.springframework.security: trace
