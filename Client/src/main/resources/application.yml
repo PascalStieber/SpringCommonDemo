@@ -15,8 +15,6 @@ server:
     cookie:
       name: CLIENTSESSION
 spring:  
-  application:
-    name: client
   sleuth:
     sampler:
        percentage:  1
@@ -39,6 +37,9 @@ logging:
 ---
 spring:
   profiles: docker_env
+  cloud:
+    config:
+      uri: http://${ENV_HOST}:9999/config
   sleuth:
     sampler:
        percentage:  1

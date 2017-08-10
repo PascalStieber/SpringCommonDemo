@@ -2,6 +2,7 @@ package com.example;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -21,12 +22,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Controller
 public class WebController {
 
-	Logger log = LoggerFactory.getLogger(EurekaClientApplication.class);
+	Logger log = LoggerFactory.getLogger(ClientApplication.class);
 	
 	@RequestMapping("/securedPage")
 	public ModelAndView securedPage(){
 		return new ModelAndView("securedPage");
 	}
+	
+	@Value("${example.property:default}")
+	private String exampleProperty;
 	
 	@RequestMapping("/securedPage2")
 	public ModelAndView securedPage2(){
@@ -35,15 +39,12 @@ public class WebController {
 	
 	@RequestMapping("/")
 	public ModelAndView index(){
+	    System.out.println(exampleProperty);
 		return new ModelAndView("index");
 	}
 
 
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
 
 //	@Override
 //	public void configureDefaultServletHandling(final DefaultServletHandlerConfigurer configurer) {

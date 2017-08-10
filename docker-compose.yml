@@ -24,6 +24,15 @@ services:
     - mynetwork
     ports:
     - 9411:9411
+  config:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
+    build: ./config
+    networks:
+    - mynetwork
+    ports:
+    - 8888:8888
   zuul:
     environment:
       SPRING_PROFILES_ACTIVE: docker_env

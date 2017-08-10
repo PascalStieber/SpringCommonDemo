@@ -15,10 +15,12 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>client</module>
+		<module>config</module>
 		<module>eureka</module>
 		<module>oauth2</module>
 		<module>zipkin</module>
 		<module>zuul</module>
+		
 	</modules>
 
 
