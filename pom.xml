@@ -14,10 +14,11 @@
 
 	<packaging>pom</packaging>
 	<modules>
-		<module>eureka</module>
 		<module>client</module>
-		<module>zuul</module>
+		<module>eureka</module>
 		<module>oauth2</module>
+		<module>zipkin</module>
+		<module>zuul</module>
 	</modules>
 
 

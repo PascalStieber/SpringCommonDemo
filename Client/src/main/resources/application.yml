@@ -17,10 +17,12 @@ server:
 spring:  
   application:
     name: client
-    
+  sleuth:
+    sampler:
+       percentage:  1
+  zipkin:
+    baseUrl:  http://localhost:9999/zipkin
 security:
-#  basic:
-#    enabled: false
   oauth2:
     client:
       clientId: SampleClientId
@@ -37,6 +39,11 @@ logging:
 ---
 spring:
   profiles: docker_env
+  sleuth:
+    sampler:
+       percentage:  1
+  zipkin:
+    baseUrl:  http://${ENV_HOST}:9999/zipkin
   thymeleaf:
     cache: false
 eureka:

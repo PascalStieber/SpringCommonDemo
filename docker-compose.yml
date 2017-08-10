@@ -15,6 +15,15 @@ services:
     - mynetwork
     ports:
     - 8585:8585
+  zipkin:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
+    build: ./zipkin
+    networks:
+    - mynetwork
+    ports:
+    - 9411:9411
   zuul:
     environment:
       SPRING_PROFILES_ACTIVE: docker_env
