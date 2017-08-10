@@ -20,6 +20,10 @@ spring:
        percentage:  1
   zipkin:
     baseUrl:  http://localhost:9999/zipkin
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
 security:
   oauth2:
     client:
@@ -37,6 +41,10 @@ logging:
 ---
 spring:
   profiles: docker_env
+  data:
+    mongodb:
+      host: ${ENV_HOST}
+      port: 27017
   cloud:
     config:
       uri: http://${ENV_HOST}:9999/config
