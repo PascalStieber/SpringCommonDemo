@@ -9,7 +9,7 @@ services:
   oauth2:
     environment:
       SPRING_PROFILES_ACTIVE: docker_env
-      ENV_HOST: 192.168.99.101
+      ENV_HOST: ${DOCKER_HOST}
     build: ./oauth2
     networks:
     - mynetwork
@@ -50,8 +50,10 @@ services:
     networks:
     - mynetwork
     depends_on:
+    - config
     - eureka
     - oauth2
+    - zipkin
     - zuul
 networks:
   mynetwork:
