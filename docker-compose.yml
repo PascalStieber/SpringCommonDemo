@@ -55,6 +55,21 @@ services:
     - oauth2
     - zipkin
     - zuul
+    - mongodb
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    networks:
+      - mynetwork
+    environment:
+      - MONGO_DATA_DIR=/data/mongodb
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/mongodb:/data/mongodb
+    ports:
+        - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+      
 networks:
   mynetwork:
     driver: bridge
