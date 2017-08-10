@@ -1,13 +1,10 @@
 environment:
   host: ${ENV_HOST}
-
-#logging:
-#  level:
-#    org.springframework: debug
-  
 server:
   port: 8888
 spring:
+  application:
+    name: config
   profiles:
     active:
     - native
@@ -19,7 +16,10 @@ spring:
 #                               file://config/src/main/resources/clientconfig/client-a,
 #                               file://config/src/main/resources/clientconfig/client-b
           searchLocations: classpath:clientconfig/,classpath:clientconfig/client,classpath:clientconfig/client-a,classpath:clientconfig/client-b
-    
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
 #  cloud:
 #    config:
 #      server:
@@ -35,17 +35,13 @@ spring:
 ---
 #Classpath and file-based solution
 spring:
-  profiles: local_file_env
+  profiles: docker_env
   cloud:
     config:
       server:
         native:
-          searchLocations: file://config/src/main/resources/clientconfig/client-a,
-                               file://config/src/main/resources/clientconfig/client-b
-#             searchLocations: classpath:clientconfig/,classpath:clientconfig/client-a,classpath:clientconfig/client-b
-
-
----
-spring:
-  profiles: docker_env
-
+          searchLocations: classpath:clientconfig/,classpath:clientconfig/client,classpath:clientconfig/client-a,classpath:clientconfig/client-b
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://eureka:8761/eureka/

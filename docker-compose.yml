@@ -26,7 +26,7 @@ services:
     - 9411:9411
   config:
     environment:
-      SPRING_PROFILES_ACTIVE: docker_env
+      SPRING_PROFILES_ACTIVE: docker_env,native
       ENV_HOST: 192.168.99.101
     build: ./config
     networks:
