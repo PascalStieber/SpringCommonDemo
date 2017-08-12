@@ -1,16 +1,18 @@
 spring:
-  application:
-    name: eventclient
   cloud:
     stream:
       bindings:
         output:
-            destination:  Topic1
+            destination:  eventtopic
             content-type: application/json
+            #content-type: text/plain
       kafka:
         binder:
-          zkNodes: localhost
-          brokers: localhost
+          zkNodes: 192.168.99.101
+          brokers: 192.168.99.101
+logging:
+  level:
+    org.springframework.kafka: trace          
 ---
 spring:
   profiles: docker_env
@@ -20,7 +22,7 @@ spring:
     stream:
       bindings:
         output:
-            destination:  Topic1
+            destination:  eventtopic
             content-type: application/json
       kafka:
         binder:

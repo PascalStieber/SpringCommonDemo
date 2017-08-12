@@ -1,15 +1,19 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-@Service
+@Controller
 public class EventService {
 	
 	@Autowired
 	SimpleSourceBean simpleSourceBean;
 
-	public void saveOrg() {
-		simpleSourceBean.publishOrgChange();
+	@RequestMapping("/test")
+	public ModelAndView saveOrg() {
+		simpleSourceBean.publishCustomerChange("pascal");
+		return new ModelAndView("index");
 	}
 }

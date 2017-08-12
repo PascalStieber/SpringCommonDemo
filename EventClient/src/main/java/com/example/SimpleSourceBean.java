@@ -1,12 +1,17 @@
 package com.example;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.integration.support.MessageBuilder;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
-import org.springframework.messaging.MessageChannel;
+
+import com.example.SimpleSourceBean.Customer;
 
 @Component
 public class SimpleSourceBean {
@@ -19,21 +24,24 @@ public class SimpleSourceBean {
 		this.source = source;
 	}
 
-	public void publishOrgChange() {
-		logger.debug("Sending Kafka message {} for Organization Id: {}");
-//		source.output()
-		source.output().send(MessageBuilder.withPayload(new Customer()).build());
+	public void publishCustomerChange(String name) {
+		logger.info("Sending Kafka message {} for Organization Id: {}");
+		Customer c = new Customer();
+		c.setName(name);
+//		source.output().send(MessageBuilder.withPayload(c).build());
+		
+		source.output().send(new GenericMessage<>("Hallo Welt"));
 	}
 
 	public class Customer {
-		private String mCustomer;
+		private String name;
 
-		public String getmCustomer() {
-			return mCustomer;
+		public String getName() {
+			return name;
 		}
 
-		public void setmCustomer(String mCustomer) {
-			this.mCustomer = mCustomer;
+		public void setName(String mCustomer) {
+			this.name = mCustomer;
 		}
 	}
 
