@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: eventclient
+  cloud:
+    stream:
+      bindings:
+        output:
+            destination:  Topic1
+            content-type: application/json
+      kafka:
+        binder:
+          zkNodes: localhost
+          brokers: localhost
+---
+spring:
+  profiles: docker_env
+  application:
+    name: eventclient
+  cloud:
+    stream:
+      bindings:
+        output:
+            destination:  Topic1
+            content-type: application/json
+      kafka:
+        binder:
+          zkNodes: ${ENV_HOST}
+          brokers: ${ENV_HOST}
+          
