@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class EventService {
+public class EventController {
 	
 	@Autowired
 	SimpleSourceBean simpleSourceBean;
 
-	@RequestMapping("/test")
-	public ModelAndView saveOrg() {
-		simpleSourceBean.publishCustomerChange("pascal");
+	@RequestMapping("/publishEvent")
+	public ModelAndView publishEvent() {
+		simpleSourceBean.publishEvent();
 		return new ModelAndView("index");
 	}
 }

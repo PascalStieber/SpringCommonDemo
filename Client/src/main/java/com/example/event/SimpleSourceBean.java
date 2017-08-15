@@ -18,7 +18,7 @@ public class SimpleSourceBean {
 		this.source = source;
 	}
 
-	public void publishCustomerChange(String name) {
+	public void publishEvent() {
 		logger.info("Sending Kafka message...");
 //		source.output().send(MessageBuilder.withPayload(c).build());
 		source.output().send(new GenericMessage<String>("Hallo Welt"));

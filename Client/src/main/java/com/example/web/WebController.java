@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ClientApplication;
 import com.example.entity.Customer;
 import com.example.repository.CustomerRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 //@Configuration
 //@EnableWebMvc
@@ -25,6 +26,12 @@ public class WebController {
 
 	@Value("${example.property:default}")
 	private String exampleProperty;
+	
+	@RequestMapping("/")
+	public ModelAndView index() {
+		System.out.println(exampleProperty);
+		return new ModelAndView("index");
+	}
 
 	@RequestMapping("/securedPage")
 	public ModelAndView securedPage() {
@@ -35,7 +42,21 @@ public class WebController {
 	public ModelAndView securedPage2() {
 		return new ModelAndView("securedPage");
 	}
-
+	
+	@RequestMapping("/hystrixtest")
+	@HystrixCommand(fallbackMethod="fallbackMethod")
+	public void hystrixtest(){
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void fallbackMethod(){
+		System.out.println("Hystrix hook: running fallback() method due to long running thread.");
+	}
+	
 	@RequestMapping("/customers")
 	public void getCustomers() {
 		repository.deleteAll();
@@ -64,11 +85,6 @@ public class WebController {
 		}
 	}
 
-	@RequestMapping("/")
-	public ModelAndView index() {
-		System.out.println(exampleProperty);
-		return new ModelAndView("index");
-	}
 
 	// @Override
 	// public void configureDefaultServletHandling(final
