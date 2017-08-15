@@ -9,7 +9,7 @@ import org.springframework.messaging.support.GenericMessage;
 public class SimpleSinkBean {
 
     @StreamListener(value=Sink.INPUT)
-    public void receive(GenericMessage<String> pMessage){
-        System.out.println(pMessage);
+    public void receive(GenericMessage pMessage){
+        System.out.println("Listener received: " + pMessage);
     }
 }

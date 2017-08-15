@@ -14,9 +14,9 @@ spring:
         binder:
           zkNodes: 192.168.99.101
           brokers: 192.168.99.101
-logging:
-  level:
-    org.springframework.kafka: trace
+#logging:
+#  level:
+#    org.springframework.kafka: trace
 ---
 spring:
   profiles: docker_env

@@ -69,7 +69,7 @@ services:
     ports:
     - 8080:8080
   mongodb:
-    image: mongo:latest
+    image: mongo:3.4
     container_name: "mongodb"
     networks:
       - mynetwork
@@ -80,7 +80,8 @@ services:
       - ./data/mongodb:/data/mongodb
     ports:
         - 27017:27017
-    command: mongod --bind_ip_all --smallfiles --logpath=/dev/null # --quiet
+#    command: mongod --bind_ip_all --smallfiles --logpath=/dev/null # --quiet
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
   zookeeper:
     image: wurstmeister/zookeeper
     ports:
