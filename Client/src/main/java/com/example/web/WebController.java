@@ -1,4 +1,4 @@
-package com.example;
+package com.example.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.example.ClientApplication;
+import com.example.entity.Customer;
+import com.example.repository.CustomerRepository;
 
 //@Configuration
 //@EnableWebMvc

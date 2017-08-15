@@ -15,6 +15,19 @@ server:
     cookie:
       name: CLIENTSESSION
 spring:  
+  cloud:
+    stream:
+      bindings:
+        output:
+            destination:  eventtopic
+            content-type: application/json
+        input:
+            destination:  eventtopic
+            content-type: application/json
+      kafka:
+        binder:
+          zkNodes: 192.168.99.101
+          brokers: 192.168.99.101
   sleuth:
     sampler:
        percentage:  1
@@ -46,6 +59,18 @@ spring:
       host: ${ENV_HOST}
       port: 27017
   cloud:
+    stream:
+      bindings:
+        output:
+            destination:  eventtopic
+            content-type: application/json
+        input:
+            destination:  eventtopic
+            content-type: application/json
+      kafka:
+        binder:
+          zkNodes: 192.168.99.101
+          brokers: 192.168.99.101
     config:
       uri: http://${ENV_HOST}:9999/config
   sleuth:
