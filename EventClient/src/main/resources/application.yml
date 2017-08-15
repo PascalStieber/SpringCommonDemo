@@ -1,11 +1,15 @@
 spring:
+  application:
+    name: eventclient
   cloud:
     stream:
       bindings:
         output:
             destination:  eventtopic
             content-type: application/json
-            #content-type: text/plain
+        input:
+            destination:  eventtopic
+            content-type: application/json
       kafka:
         binder:
           zkNodes: 192.168.99.101
@@ -21,6 +25,9 @@ spring:
   cloud:
     stream:
       bindings:
+        input:
+            destination:  eventtopic
+            content-type: application/json
         output:
             destination:  eventtopic
             content-type: application/json

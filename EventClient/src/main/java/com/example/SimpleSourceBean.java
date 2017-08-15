@@ -30,7 +30,7 @@ public class SimpleSourceBean {
 		c.setName(name);
 //		source.output().send(MessageBuilder.withPayload(c).build());
 		
-		source.output().send(new GenericMessage<>("Hallo Welt"));
+		source.output().send(new GenericMessage<String>("Hallo Welt"));
 	}
 
 	public class Customer {
