@@ -9,29 +9,28 @@ public class Customer {
 
     @Id
     public String id;
-
-    public String firstName;
-    public String lastName;
+    public String firstname;
+    public String lastname;
     public List<Contract> contracts;
     
     public Customer() {}
 
-    public Customer(String firstName, String lastName, List<Contract> contracts) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Customer(String firstname, String lastname, List<Contract> contracts) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.contracts = contracts;
     }
     
-    public Customer(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Customer(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Customer[id=%s, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+                "Customer[id=%s, firstname='%s', lastname='%s']",
+                id, firstname, lastname);
     }
 
 	public String getId() {
@@ -42,20 +41,20 @@ public class Customer {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public List<Contract> getContracts() {

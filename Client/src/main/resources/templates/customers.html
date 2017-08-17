@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Spring Security SSO Client 2</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+<div class="container">
+	<div class="col-sm-12">
+		<h1>Customers and its Contacts</h1>
+		<table>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Contacts</th>
+      </tr>
+      <tr th:each="customer,iter : ${customerList}">
+        <td th:text="${customer.firstname}">NONE</td>
+        <td th:text="${customer.lastname}">NONE</td>
+        <td><table >
+      <tr>
+        <th>Reference</th>
+        <th>Subject</th>
+      </tr>
+      <tr th:each="contract,iter : ${customer.contracts}">
+        <td th:text="${contract.reference}">NONE</td>
+        <td th:text="${contract.subject}">NONE</td>
+      </tr>
+    </table></td>
+      </tr>
+    </table>
+<!-- 		<a class="btn btn-primary" href="securedPage">Login</a> -->
+	</div>
+</div>
+</body>
+</html>

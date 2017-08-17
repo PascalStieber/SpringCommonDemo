@@ -18,9 +18,6 @@ import com.example.repository.ContractRepository;
 import com.example.repository.CustomerRepository;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-//@Configuration
-//@EnableWebMvc
-//@RestController
 @Controller
 public class WebController {
 
@@ -66,7 +63,7 @@ public class WebController {
 	}
 
 	@RequestMapping("/customers")
-	public void getCustomers() {
+	public ModelAndView getCustomers() {
 		customerRepository.deleteAll();
 		contractRepository.deleteAll();
 		Contract contract = new Contract("referenceAZ23B", "quotation");
@@ -94,33 +91,17 @@ public class WebController {
 		// fetch an individual customer
 		System.out.println("Customer found with findByFirstName('Alice'):");
 		System.out.println("--------------------------------");
-		System.out.println(customerRepository.findByFirstName("Alice"));
+		System.out.println(customerRepository.findByFirstname("Alice"));
 
 		System.out.println("Customers found with findByLastName('Smith'):");
 		System.out.println("--------------------------------");
-		for (Customer customer : customerRepository.findByLastName("Smith")) {
+		for (Customer customer : customerRepository.findByLastname("Smith")) {
 			System.out.println(customer);
 		}
+		
+		ModelAndView model = new ModelAndView("customers");
+		model.addObject("customerList", customerRepository.findAll());
+		return model;
 	}
-
-	// @Override
-	// public void configureDefaultServletHandling(final
-	// DefaultServletHandlerConfigurer configurer) {
-	// configurer.enable();
-	// }
-	//
-	// @Override
-	// public void addViewControllers(final ViewControllerRegistry registry) {
-	// super.addViewControllers(registry);
-	// registry.addViewController("/").setViewName("forward:/index");
-	// registry.addViewController("/index");
-	// registry.addViewController("/securedPage");
-	// registry.addViewController("/securedPage2");
-	// }
-	//
-	// @Override
-	// public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-	// registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-	// }
-
+	
 }

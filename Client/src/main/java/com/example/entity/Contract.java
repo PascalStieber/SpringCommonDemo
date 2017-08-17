@@ -7,7 +7,6 @@ public class Contract {
 
     @Id
     public String id;
-
     public String reference;
     public String subject;
 

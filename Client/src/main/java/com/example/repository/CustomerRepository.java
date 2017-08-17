@@ -8,7 +8,7 @@ import com.example.entity.Customer;
 
 public interface CustomerRepository extends MongoRepository<Customer, String> {
 
-    public Customer findByFirstName(String firstName);
-    public List<Customer> findByLastName(String lastName);
+    public Customer findByFirstname(String firstname);
+    public List<Customer> findByLastname(String lastname);
 
 }
