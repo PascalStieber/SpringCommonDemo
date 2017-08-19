@@ -14,8 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ClientApplication;
 import com.example.entity.Contract;
 import com.example.entity.Customer;
+import com.example.entity.User;
 import com.example.repository.ContractRepository;
 import com.example.repository.CustomerRepository;
+import com.example.repository.UserRepository;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Controller
@@ -47,6 +49,20 @@ public class WebController {
 	public ModelAndView securedPage2() {
 		return new ModelAndView("securedPage");
 	}
+	
+    @Autowired
+    UserRepository userRepository;
+    
+    @RequestMapping("/initAdminUser")
+    public void initAdminUser(){
+    	userRepository.deleteAll();
+    	User user = new User();
+    	user.setEmail("pascal.stieber@outlook.de");
+    	user.setPassword("a");
+    	user.addRole("admin");
+    	user.setUsername("Pascal Stieber");
+    	userRepository.save(user);
+    }
 
 	@RequestMapping("/hystrixtest")
 	@HystrixCommand(fallbackMethod = "fallbackMethod")
