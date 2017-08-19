@@ -102,9 +102,14 @@ public class WebController {
 	
 	
 	@RequestMapping(value="/customers", params="btn_action=save")
-	public ModelAndView getCustomersAndSave(Customer newcustomer) {
-		if(newcustomer!=null) {
-			customerRepository.save(newcustomer);
+	public ModelAndView getCustomersAndSave(Customer newcustomer, Contract newcontract) {
+		
+		if(newcontract!=null){
+			Contract savedcontract = contractRepository.save(newcontract);
+			if(newcustomer!=null) {
+				newcustomer.addContract(savedcontract);
+				customerRepository.save(newcustomer);
+			}
 		}
 		ModelAndView model = new ModelAndView("customers");
 		model.addObject("customerList", customerRepository.findAll());

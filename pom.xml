@@ -20,6 +20,7 @@
 		<module>config</module>
 		<module>eureka</module>
 		<module>oauth2</module>
+		<module>turbine</module>
 		<module>zipkin</module>
 		<module>zuul</module>
 	</modules>

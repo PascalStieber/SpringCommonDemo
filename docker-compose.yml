@@ -42,6 +42,15 @@ services:
     - mynetwork
     ports:
     - 9999:9999
+  turbine:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
+    build: ./turbine
+    networks:
+    - mynetwork
+    ports:
+    - 6565:6565
   client:
     environment:
       SPRING_PROFILES_ACTIVE: docker_env
@@ -54,6 +63,7 @@ services:
     - eureka
     - oauth2
     - zipkin
+    - turbine
     - zuul
     - mongodb
     - kafka

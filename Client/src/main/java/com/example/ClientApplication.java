@@ -6,11 +6,13 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 
 @EnableOAuth2Sso
 @SpringBootApplication
 @EnableDiscoveryClient
 @RefreshScope
+@EnableHystrix
 @EnableCircuitBreaker
 public class ClientApplication {
 
