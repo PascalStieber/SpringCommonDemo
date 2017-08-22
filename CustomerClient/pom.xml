@@ -56,11 +56,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.netflix.hystrix</groupId> -->
-<!-- 			<artifactId>hystrix-javanica</artifactId> -->
-<!-- 			<version>1.5.9</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.netflix.hystrix</groupId> -->
+		<!-- <artifactId>hystrix-javanica</artifactId> -->
+		<!-- <version>1.5.9</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
@@ -165,6 +165,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<imageName>customerclient</imageName>
+					<dockerDirectory>.</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
