@@ -6,6 +6,12 @@ services:
     - mynetwork
     ports:
     - 8761:8761
+  admin:
+    build: ./admin
+    networks:
+    - mynetwork
+    ports:
+    - 1111:1111
   oauth2:
     environment:
       SPRING_PROFILES_ACTIVE: docker_env
@@ -59,6 +65,7 @@ services:
     networks:
     - mynetwork
     depends_on:
+    - admin
     - config
     - eureka
     - oauth2

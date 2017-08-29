@@ -23,6 +23,7 @@
 		<module>turbine</module>
 		<module>zipkin</module>
 		<module>zuul</module>
+		<module>admin</module>
 	</modules>
 
 
