@@ -1,13 +1,35 @@
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 1111
+
 spring:
+  application:
+    name: admin
   boot:
     admin:
       routes:
         endpoints:
         - env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,activiti,auditevents,hystrix.stream
       turbine:
-        clusters: default
+        clusters: CLIENT
         location: turbine
-      
-        
+---
+spring:
+  profiles: docker_env
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${ENV_HOST}:8761/eureka/
         
         

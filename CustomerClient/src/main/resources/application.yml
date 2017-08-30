@@ -53,6 +53,9 @@ security:
 #logging:
 #  level:
 #    org.springframework.security: trace
+management:
+  security:
+    enabled: false
 ---
 spring:
   profiles: docker_env

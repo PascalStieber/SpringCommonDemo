@@ -29,12 +29,12 @@ public class WebController {
 	@Autowired
 	private ContractRepository contractRepository;
 
-	@Value("${example.property:default}")
+	@Value("${exampleproperty:default}")
 	private String exampleProperty;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
-		System.out.println(exampleProperty);
+		System.out.println(this.exampleProperty);
 		return new ModelAndView("index");
 	}
 

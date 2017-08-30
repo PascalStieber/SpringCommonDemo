@@ -7,6 +7,9 @@ services:
     ports:
     - 8761:8761
   admin:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
     build: ./admin
     networks:
     - mynetwork

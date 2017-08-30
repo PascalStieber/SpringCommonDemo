@@ -24,6 +24,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-server</artifactId>
 			<version>1.5.0</version>
