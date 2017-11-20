@@ -28,6 +28,7 @@ This blueprint uses the following technologies:
 > - Zookeeper
 
 	
+	
 
 It has three small clients that act as a demo application as well.
 
