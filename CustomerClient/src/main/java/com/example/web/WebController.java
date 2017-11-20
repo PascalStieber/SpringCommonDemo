@@ -49,20 +49,20 @@ public class WebController {
 	public ModelAndView securedPage2() {
 		return new ModelAndView("securedPage");
 	}
-	
-    @Autowired
-    UserRepository userRepository;
-    
-    @RequestMapping("/initAdminUser")
-    public void initAdminUser(){
-    	userRepository.deleteAll();
-    	User user = new User();
-    	user.setEmail("pascal.stieber@outlook.de");
-    	user.setPassword("a");
-    	user.addRole("admin");
-    	user.setUsername("Pascal Stieber");
-    	userRepository.save(user);
-    }
+
+	@Autowired
+	UserRepository userRepository;
+
+	@RequestMapping("/initAdminUser")
+	public void initAdminUser() {
+		userRepository.deleteAll();
+		User user = new User();
+		user.setEmail("pascal.stieber@outlook.de");
+		user.setPassword("a");
+		user.addRole("admin");
+		user.setUsername("Pascal Stieber");
+		userRepository.save(user);
+	}
 
 	@RequestMapping("/hystrixtest")
 	@HystrixCommand(fallbackMethod = "fallbackMethod")
@@ -115,14 +115,13 @@ public class WebController {
 			System.out.println(customer);
 		}
 	}
-	
-	
-	@RequestMapping(value="/customers", params="btn_action=save")
+
+	@RequestMapping(value = "/customers", params = "btn_action=save")
 	public ModelAndView getCustomersAndSave(Customer newcustomer, Contract newcontract) {
-		
-		if(newcontract!=null){
+
+		if (newcontract != null) {
 			Contract savedcontract = contractRepository.save(newcontract);
-			if(newcustomer!=null) {
+			if (newcustomer != null) {
 				newcustomer.addContract(savedcontract);
 				customerRepository.save(newcustomer);
 			}
@@ -133,7 +132,7 @@ public class WebController {
 		return model;
 	}
 
-	@RequestMapping(value="/customers", params="btn_action=addContract")
+	@RequestMapping(value = "/customers", params = "btn_action=addContract")
 	public ModelAndView addContract(Customer newcustomer) {
 		ModelAndView model = new ModelAndView("customers");
 		Contract newcontract = new Contract("-", "-");
@@ -143,8 +142,8 @@ public class WebController {
 		model.addObject("newcontract", newcontract);
 		return model;
 	}
-	
-	@RequestMapping(value="/customers")
+
+	@RequestMapping(value = "/customers")
 	public ModelAndView getCustomers(Customer newcustomer) {
 		ModelAndView model = new ModelAndView("customers");
 		model.addObject("customerList", customerRepository.findAll());
