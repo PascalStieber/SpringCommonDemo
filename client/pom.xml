@@ -5,14 +5,11 @@
 	<groupId>com.example</groupId>
 	<artifactId>client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>SpringCommonDemo</groupId>
+		<artifactId>SpringCommonDemo</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -56,11 +53,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.netflix.hystrix</groupId> -->
-<!-- 			<artifactId>hystrix-javanica</artifactId> -->
-<!-- 			<version>1.5.9</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.netflix.hystrix</groupId> -->
+		<!-- <artifactId>hystrix-javanica</artifactId> -->
+		<!-- <version>1.5.9</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
