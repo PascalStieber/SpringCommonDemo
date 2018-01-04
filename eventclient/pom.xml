@@ -3,7 +3,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>eventclient</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 
 
@@ -143,6 +143,6 @@
 
 
   <scm>
-    <tag>SpringCommonDemo-0.0.1</tag>
+    <tag>SpringCommonDemo-0.0.2</tag>
   </scm>
 </project>
