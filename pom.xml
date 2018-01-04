@@ -66,6 +66,7 @@
 				<configuration>
 					<username>pascal.stieber.ps@googlemail.com</username>
 					<password>Cash##1989</password>
+					<arguments>-DskipTests -Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true</arguments>
 				</configuration>
 			</plugin>
 			<plugin>
