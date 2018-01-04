@@ -2,11 +2,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>SpringCommonDemo</groupId>
 	<artifactId>SpringCommonDemo</artifactId>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>1.2.0</version>
 	<packaging>pom</packaging>
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
-	</scm>
+	  <tag>SpringCommonDemo-1.2.0</tag>
+  </scm>
 
 	<properties>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -65,8 +66,7 @@
 				<configuration>
 					<username>pascal.stieber.ps@googlemail.com</username>
 					<password>Cash##1989</password>
-					<arguments>-DskipTests=true -Dmaven.javadoc.skip=true
-						-Dmaven.deploy.skip=true</arguments>
+					<arguments>-DskipTests=true -Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true</arguments>
 				</configuration>
 			</plugin>
 			<plugin>
