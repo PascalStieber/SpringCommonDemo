@@ -6,8 +6,7 @@
 	<packaging>pom</packaging>
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+  	</scm>
 
 	<properties>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -66,7 +65,7 @@
 				<configuration>
 					<username>pascal.stieber.ps@googlemail.com</username>
 					<password>Cash##1989</password>
-					<arguments>-DskipTests -Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true</arguments>
+					<arguments>-DskipTests=true -Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true</arguments>
 				</configuration>
 			</plugin>
 			<plugin>
