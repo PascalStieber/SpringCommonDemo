@@ -4,7 +4,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>zuul</artifactId>
-	<version>0.0.9-SNAPSHOT</version>
+	<version>0.0.9</version>
 	<packaging>jar</packaging>
 
 	<description>Demo project for Spring Boot</description>
@@ -63,6 +63,6 @@
 
 
   <scm>
-    <tag>SpringCommonDemo-0.0.2</tag>
+    <tag>SpringCommonDemo-0.0.9</tag>
   </scm>
 </project>
