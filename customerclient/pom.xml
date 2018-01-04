@@ -3,7 +3,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>customerclient</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.3</version>
 	<packaging>jar</packaging>
 
 
@@ -189,6 +189,6 @@
 
 
   <scm>
-    <tag>SpringCommonDemo-0.0.2</tag>
+    <tag>SpringCommonDemo-0.0.3</tag>
   </scm>
 </project>
