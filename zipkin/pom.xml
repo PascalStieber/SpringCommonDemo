@@ -4,7 +4,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>zipkin</artifactId>
-	<version>0.0.14</version>
+	<version>0.0.15-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<description>Demo project for Spring Boot</description>
@@ -75,6 +75,6 @@
 
 
   <scm>
-    <tag>SpringCommonDemo-0.0.14</tag>
+    <tag>SpringCommonDemo-0.0.2</tag>
   </scm>
 </project>
