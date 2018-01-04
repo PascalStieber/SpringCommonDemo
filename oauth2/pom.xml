@@ -4,7 +4,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>oauth2</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<description>Demo project for Spring Boot</description>
