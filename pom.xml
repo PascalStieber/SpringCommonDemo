@@ -2,10 +2,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>SpringCommonDemo</groupId>
 	<artifactId>SpringCommonDemo</artifactId>
-	<version>0.0.9</version>
+	<version>0.0.10-SNAPSHOT</version>
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
-		<tag>SpringCommonDemo-0.0.9</tag>
+		<tag>SpringCommonDemo-0.0.7</tag>
 	</scm>
 
 	<properties>
