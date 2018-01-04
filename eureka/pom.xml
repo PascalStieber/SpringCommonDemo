@@ -3,7 +3,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>eureka</artifactId>
-	<version>0.0.8-SNAPSHOT</version>
+	<version>0.0.8</version>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -57,6 +57,6 @@
 	</build>
 
   <scm>
-    <tag>SpringCommonDemo-0.0.2</tag>
+    <tag>SpringCommonDemo-0.0.8</tag>
   </scm>
 </project>
