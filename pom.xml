@@ -3,10 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>SpringCommonDemo</groupId>
 	<artifactId>SpringCommonDemo</artifactId>
-	<version>0.0.16-SNAPSHOT</version>
+	<version>0.0.16</version>
 	<packaging>pom</packaging>
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
+		<tag>SpringCommonDemo-0.0.16</tag>
 	</scm>
 
 	<properties>
@@ -64,9 +65,9 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<username>pascal.stieber.ps@googlemail.com</username>
 					<password>Cash##1989</password>
-					<developmentVersion>1.0.3</developmentVersion>
 					<arguments>-DskipTests=true -Dmaven.javadoc.skip=true
 						-Dmaven.deploy.skip=true</arguments>
 				</configuration>
