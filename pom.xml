@@ -44,7 +44,7 @@
 		<repository>
 			<id>SpringCommonDemo</id>
 			<name>SpringCommonDemo</name>
-			<url>file://Users/pascalstieber/repositories/tags</url>
+			<url>file:///Users/pascalstieber/repositories/tags</url>
 		</repository>
 	</distributionManagement>
 
