@@ -4,7 +4,7 @@
 	<artifactId>SpringCommonDemo</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<scm>
-		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo</developerConnection>
+		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo/SpringCommonDemo.git</developerConnection>
 	  <tag>HEAD</tag>
   </scm>
 	<parent>
