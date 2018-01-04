@@ -3,9 +3,10 @@
 	<groupId>SpringCommonDemo</groupId>
 	<artifactId>SpringCommonDemo</artifactId>
 	<version>0.0.13-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
-  </scm>
+	</scm>
 
 	<properties>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -18,7 +19,6 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<packaging>pom</packaging>
 	<modules>
 		<module>client</module>
 		<module>customerclient</module>
