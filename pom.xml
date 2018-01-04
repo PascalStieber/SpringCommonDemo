@@ -41,13 +41,13 @@
 		</dependencies>
 	</dependencyManagement>
 
-<!-- 	<distributionManagement> -->
-<!-- 		<repository> -->
-<!-- 			<id>SpringCommonDemo</id> -->
-<!-- 			<name>SpringCommonDemo</name> -->
-<!-- 			<url>file://~/repositories/tags</url> -->
-<!-- 		</repository> -->
-<!-- 	</distributionManagement> -->
+	<distributionManagement>
+		<repository>
+			<id>SpringCommonDemo</id>
+			<name>SpringCommonDemo</name>
+			<url>file://Users/pascalstieber/repositories/tags</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
@@ -62,7 +62,6 @@
 				<configuration>
 					<username>pascal.stieber.ps@googlemail.com</username>
 					<password>Cash##1989</password>
-					<tagBase>https://svn.mycompany.com/repos/myapplication/releases</tagBase>
 				</configuration>
 			</plugin>
 			<plugin>
