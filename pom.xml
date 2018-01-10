@@ -46,13 +46,23 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- <distributionManagement> -->
-	<!-- <repository> -->
-	<!-- <id>SpringCommonDemo</id> -->
-	<!-- <name>SpringCommonDemo</name> -->
-	<!-- <url>file:///Users/pascalstieber/repositories/tags</url> -->
-	<!-- </repository> -->
-	<!-- </distributionManagement> -->
+	<distributionManagement>
+		<!-- <repository> -->
+		<!-- <id>SpringCommonDemo file tag</id> -->
+		<!-- <name>SpringCommonDemo</name> -->
+		<!-- <url>file:///Users/pascalstieber/repositories/tags</url> -->
+		<!-- </repository> -->
+		<repository>
+			<id>SpringCommonDemo nexus release</id>
+			<name>SpringCommonDemo release</name>
+			<url>http://192.168.99.100:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>SpringCommonDemo nexus snapshot</id>
+			<name>SpringCommonDemo snapshot</name>
+			<url>http://192.168.99.100:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
@@ -67,7 +77,7 @@
 				<configuration>
 					<username>pascal.stieber.ps@googlemail.com</username>
 					<password>Cash##1989</password>
-					<arguments>-DskipTests=true -Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true</arguments>
+					<arguments>-DskipTests=true -Dmaven.javadoc.skip=true</arguments>
 				</configuration>
 			</plugin>
 			<plugin>
