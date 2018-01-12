@@ -25,8 +25,15 @@ mavenJob('releaseSpringCommonDemo'){
     //triggers{
     	//	pollSCM{scmpoll_spec('H/30 * * * *')}
     //}
-	scm{
-		github('PascalStieber/SpringCommonDemo')
+    
+    scm{
+		git {
+            remote {
+                github('https://github.com/PascalStieber/SpringCommonDemo')
+                credentials('9d7f5d5b-8cb8-4f14-af04-101e4417bb9b')
+            }
+        }
 	}
+	
 	goals('release:prepare release:perform')
 }
