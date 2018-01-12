@@ -10,6 +10,11 @@ mavenJob('buildSpringCommonDemo'){
 		github('PascalStieber/SpringCommonDemo')
 	}
 	goals('clean install')
+	publishers{
+		sonar{
+			branch('master')
+		}
+	}
 }
 
 mavenJob('releaseSpringCommonDemo'){
