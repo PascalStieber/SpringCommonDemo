@@ -3,12 +3,12 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>client</artifactId>
-	<version>1.2.2</version>
+	<version>1.2.3-SNAPSHOT</version>
 
 	<parent>
 		<groupId>SpringCommonDemo</groupId>
 		<artifactId>SpringCommonDemo</artifactId>
-		<version>1.2.2</version>
+		<version>1.2.3-SNAPSHOT</version>
 	</parent>
 
 	<properties>
