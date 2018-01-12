@@ -34,6 +34,7 @@ mavenJob('releaseSpringCommonDemo'){
             }
             extensions{
             		cleanBeforeCheckout()
+            		localBranch('master')
             }
         }
 	}
