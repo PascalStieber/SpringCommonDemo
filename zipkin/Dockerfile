@@ -1,4 +1,6 @@
-FROM ewolff/docker-java
-ADD target/zipkin-0.0.1-SNAPSHOT.jar .
-CMD /usr/bin/java -Xmx600m -Xms600m -jar zipkin-0.0.1-SNAPSHOT.jar
-EXPOSE 9411
+FROM openjdk:9-jre
+LABEL maintainer="pascal.stieber.ps@googlemail.com"
+
+ARG JAR_FILE
+ADD target/$JAR_FILE executable_service.jar
+CMD /usr/bin/java -Xmx600m -Xms600m -jar executable_service.jar
