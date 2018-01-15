@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springcommondemo</groupId>
 	<artifactId>parent</artifactId>
 	<version>1.2.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
 		<!-- <tag>SpringCommonDemo-1.2.0</tag> -->
@@ -97,9 +98,11 @@
 				<version>2.5.3</version>
 				<configuration>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<username>pascal.stieber.ps@googlemail.com</username>
-					<password>Cash##1989</password>
-<!-- 					<arguments>-DskipTests=true -Dmaven.javadoc.skip=true</arguments> -->
+					<username>admin</username>
+					<password>admin123</password>
+					<!-- <username>pascal.stieber.ps@googlemail.com</username> -->
+					<!-- <password>Cash##1989</password> -->
+					<!-- <arguments>-DskipTests=true -Dmaven.javadoc.skip=true</arguments> -->
 				</configuration>
 			</plugin>
 		</plugins>
