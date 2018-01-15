@@ -1,15 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springcommondemo</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
+	<version>1.2.2</version>
 	<packaging>pom</packaging>
 
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
 		<!-- <tag>SpringCommonDemo-1.2.0</tag> -->
-	</scm>
+	  <tag>parent-1.2.2</tag>
+  </scm>
 
 	<properties>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -30,7 +30,7 @@
 		<module>config</module>
 		<module>eureka</module>
 		<module>oauth2</module>
-		<module>turbine</module>
+<!-- 		<module>turbine</module> -->
 		<module>zipkin</module>
 		<module>zuul</module>
 		<module>admin</module>
