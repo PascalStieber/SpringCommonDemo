@@ -2,13 +2,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springcommondemo</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.2.2</version>
+	<version>1.2.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
 		<!-- <tag>SpringCommonDemo-1.2.0</tag> -->
-	  <tag>parent-1.2.2</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<properties>
