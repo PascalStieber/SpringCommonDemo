@@ -86,6 +86,7 @@
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 			<plugin>
