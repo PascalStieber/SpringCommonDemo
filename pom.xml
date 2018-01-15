@@ -16,11 +16,12 @@
 		<!-- <maven.deploy.skip>true</maven.deploy.skip> -->
 		<dockerfile.skip>true</dockerfile.skip>
 	</properties>
+	
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Dalston.SR5</version>
+		<relativePath/>
 	</parent>
 
 	<modules>
