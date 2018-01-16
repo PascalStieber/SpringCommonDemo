@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springcommondemo</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.2.2-SNAPSHOT</version>
+	<version>1.3.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<scm>
@@ -21,7 +20,7 @@
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
 		<version>Dalston.SR5</version>
-		<relativePath/>
+		<relativePath />
 	</parent>
 
 	<modules>
@@ -56,12 +55,12 @@
 		<!-- <url>file:///Users/pascalstieber/repositories/tags</url> -->
 		<!-- </repository> -->
 		<repository>
-			<id>SpringCommonDemo nexus release</id>
+			<id>nexus</id>
 			<name>SpringCommonDemo release</name>
 			<url>http://192.168.99.100:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>SpringCommonDemo nexus snapshot</id>
+			<id>nexus</id>
 			<name>SpringCommonDemo snapshot</name>
 			<url>http://192.168.99.100:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
