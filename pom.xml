@@ -2,14 +2,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springcommondemo</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.3.1-SNAPSHOT</version>
+	<version>1.3.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
 		<!-- <tag>SpringCommonDemo-1.2.0</tag> -->
-	  <tag>HEAD</tag>
-  </scm>
+	</scm>
 
 	<properties>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
