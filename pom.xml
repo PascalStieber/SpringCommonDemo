@@ -16,6 +16,7 @@
 		<!-- <maven.deploy.skip>true</maven.deploy.skip> -->
 		<dockerfile.skip>true</dockerfile.skip>
 		<maven.site.skip>true</maven.site.skip>
+		<project.scm.id>git</project.scm.id>
 	</properties>
 
 	<parent>
@@ -100,12 +101,10 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
-					<tagNameFormat>SpringCommonDemo-${project.version}</tagNameFormat>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<scmCommentPrefix>automatic released</scmCommentPrefix>
 					<!-- <username>admin</username> -->
 					<!-- <password>admin123</password> -->
-					<username>pascal.stieber.ps@googlemail.com</username>
-					<password>Cash##1989</password>
 					<!-- <arguments>-DskipTests=true -Dmaven.javadoc.skip=true</arguments> -->
 				</configuration>
 			</plugin>
