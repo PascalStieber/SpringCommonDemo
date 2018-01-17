@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.springcommon.demo</groupId>
 	<artifactId>parent</artifactId>
@@ -8,8 +9,8 @@
 	<scm>
 		<developerConnection>scm:git:https://github.com/PascalStieber/SpringCommonDemo.git</developerConnection>
 		<!-- <tag>SpringCommonDemo-1.2.0</tag> -->
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<properties>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
@@ -75,21 +76,13 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.3.7</version>
-				<executions>
-					<execution>
-						<id>default</id>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
-					<repository>${project.parent.artifactId}/${project.artifactId}</repository>
+<!-- 					<repository>${project.parent.artifactId}/${project.artifactId}</repository> -->
+					<repository>springcommondemo_${project.artifactId}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
-					<skip>true</skip>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -103,9 +96,6 @@
 				<configuration>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 					<scmCommentPrefix>automatic released</scmCommentPrefix>
-					<!-- <username>admin</username> -->
-					<!-- <password>admin123</password> -->
-					<!-- <arguments>-DskipTests=true -Dmaven.javadoc.skip=true</arguments> -->
 				</configuration>
 			</plugin>
 		</plugins>

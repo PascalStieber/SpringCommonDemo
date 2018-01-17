@@ -65,18 +65,19 @@ services:
       SPRING_PROFILES_ACTIVE: docker_env
       ENV_HOST: 192.168.99.101
     build: ./client
+    image: springcommondemo/client:latest
     networks:
     - mynetwork
-    depends_on:
-    - admin
-    - config
-    - eureka
-    - oauth2
-    - zipkin
-    - turbine
-    - zuul
-    - mongodb
-    - kafka
+#    depends_on:
+#    - admin
+#    - config
+#    - eureka
+#    - oauth2
+#    - zipkin
+#    - turbine
+#    - zuul
+#    - mongodb
+#    - kafka
   eventclient:
     environment:
       SPRING_PROFILES_ACTIVE: docker_env

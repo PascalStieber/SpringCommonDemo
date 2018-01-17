@@ -1,4 +1,5 @@
-FROM openjdk:9-jre
+#FROM openjdk:9-jre
+FROM openjdk:9-jre-slim
 LABEL maintainer="pascal.stieber.ps@googlemail.com"
 
 ARG JAR_FILE
