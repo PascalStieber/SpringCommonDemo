@@ -1,0 +1,42 @@
+version: '3.4'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    networks:
+      - cinetwork
+    volumes:
+      - ~/docker_data/jenkins_home:/var/jenkins_home
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+      - "50000:50000"
+    depends_on:
+      - nexus
+      - mongoclient
+      - sonarqube
+  nexus:
+    image: sonatype/nexus
+    container_name: nexus
+    networks:
+      - cinetwork
+    ports:
+      - "8081:8081"
+  mongoclient:
+    image: mongoclient/mongoclient
+    container_name: mongoclient
+    networks:
+      - cinetwork
+    ports:
+      - "3000:3000"
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqube
+    networks:
+     - cinetwork
+    ports:
+     - "9000:9000"
+
+networks:
+  cinetwork:
+    driver: bridge
