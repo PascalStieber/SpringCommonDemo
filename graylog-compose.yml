@@ -21,6 +21,9 @@ services:
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
     image: graylog/graylog:2.3.2-1
+    volumes:
+      # Mount local configuration directory into Docker container
+      - ./graylog.conf:/usr/share/graylog/data/config
     environment:
       # CHANGE ME!
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
