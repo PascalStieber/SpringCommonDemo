@@ -99,11 +99,16 @@ services:
     - mynetwork
     ports:
     - 8080:8080
+#    logging:
+#      driver: "syslog"
+#      options:
+#        syslog-address: "tcp://192.168.99.102:514"
+#        tag: "customerclient_"
     logging:
-      driver: "syslog"
+      driver: "gelf"
       options:
-        syslog-address: "tcp://192.168.99.102:514"
-        tag: "customerclient_"
+        gelf-address: "udp://192.168.99.102:12201"
+        tag: "customerclient_"   
   mongodb:
     image: mongo:3.4
     #container_name: mongodb
