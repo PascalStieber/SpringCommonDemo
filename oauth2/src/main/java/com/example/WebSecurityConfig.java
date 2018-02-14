@@ -60,8 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.requestMatchers().antMatchers("/login.html", "/oauth/authorize", "/oauth/token_key", "/initAdminUser").and().authorizeRequests()
-				.anyRequest().authenticated().and().formLogin().loginPage("/login.html").permitAll();
+		http.requestMatchers().antMatchers("/login.html", "/login-error.html", "/oauth/authorize", "/oauth/token_key", "/initAdminUser").and().authorizeRequests()
+				.anyRequest().authenticated().and().formLogin().loginPage("/login.html").failureUrl("/login-error.html").permitAll();
 	}
 
 	// @Autowired
