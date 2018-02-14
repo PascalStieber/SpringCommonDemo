@@ -90,6 +90,20 @@ services:
     - kafka
     ports:
     - 8080:8080
+  customerclient:
+    environment:
+      SPRING_PROFILES_ACTIVE: docker_env
+      ENV_HOST: 192.168.99.101
+    build: ./customerclient
+    networks:
+    - mynetwork
+    ports:
+    - 8080:8080
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://192.168.99.102:514"
+        tag: "customerclient_"
   mongodb:
     image: mongo:3.4
     #container_name: mongodb
