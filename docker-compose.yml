@@ -115,10 +115,10 @@ services:
     networks:
     - mynetwork
     environment:
-    - MONGO_DATA_DIR=/data/mongodb
+    - MONGO_DATA_DIR=~/docker_data/mongodb
     #- MONGO_LOG_DIR=/dev/null
     volumes:
-    - ./data/mongodb:/data/mongodb
+    - ~/docker_data/mongodb:/data/mongodb
     ports:
     - 27017:27017
     command: mongod
