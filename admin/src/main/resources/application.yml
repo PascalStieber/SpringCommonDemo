@@ -30,6 +30,6 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://${ENV_HOST}:8761/eureka/
+      defaultZone: http://eureka:8761/eureka/
         
         
