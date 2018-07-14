@@ -78,7 +78,7 @@
 				<configuration>
 					<!-- <repository>${project.parent.artifactId}/${project.artifactId}</repository> -->
 					<!-- <tag>${project.version}</tag> -->
-					<repository>springcommondemo_${project.artifactId}</repository>
+					<repository>scd_${project.artifactId}</repository>
 					<tag>latest</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
