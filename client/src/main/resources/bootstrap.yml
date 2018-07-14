@@ -4,9 +4,9 @@ spring:
   cloud:
     config:
       uri: http://localhost:9999/config
-management:
-  security:
-    enabled: false
+#management:
+#  security:
+#    enabled: false
 ---
 spring:
   profiles: docker_env

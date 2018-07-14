@@ -6,7 +6,8 @@ spring:
       host: 192.168.99.101
       port: 27017
 server:
-    contextPath: /secret
+    servlet:
+      context-path: /secret
     port: 8585
     use-forward-headers: true
 eureka:
@@ -24,17 +25,14 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://eureka:8761/eureka/
-security:
+
+spring:
+  security:
     user:
         password: password
-spring:
   profiles: docker_env 
   data:
     mongodb:
       host: 192.168.99.101
       port: 27017
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    password: Cash##1989
-#    url: jdbc:mysql://192.168.178.20:3306/mrlocksmithmicroservices
-#    username: root
+

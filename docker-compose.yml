@@ -79,6 +79,8 @@ services:
     - zuul
     - mongodb
     - kafka
+    ports:
+    - 8080:8080
   eventclient:
     environment:
       SPRING_PROFILES_ACTIVE: docker_env
@@ -129,6 +131,12 @@ services:
     - 2181:2181
     networks:
     - mynetwork
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+    - 9411:9411
+    networks:
+    - mynetwork
   kafka:
     image: wurstmeister/kafka
     ports:
@@ -144,7 +152,10 @@ services:
     - zookeeper
     networks:
     - mynetwork
-    
+  rabbitmq:
+    image: rabbitmq
+    ports:
+    - 15672:15672
     
 networks:
   mynetwork:

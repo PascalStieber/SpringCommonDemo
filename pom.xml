@@ -23,7 +23,7 @@
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Dalston.SR5</version>
+		<version>Finchley.RELEASE</version>
 		<relativePath />
 	</parent>
 
@@ -35,7 +35,6 @@
 		<module>eureka</module>
 		<module>oauth2</module>
 		<module>turbine</module>
-		<module>zipkin</module>
 		<module>zuul</module>
 		<module>admin</module>
 	</modules>
@@ -45,7 +44,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR5</version>
+				<version>Finchley.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
@@ -26,65 +28,67 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.context.request.RequestContextListener;
 
+@EnableOAuth2Sso
 @Configuration
+@Order(-10)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	   @Autowired
-	    OAuth2ClientContext oauth2ClientContext;
+	@Override
+	public void configure(HttpSecurity http) throws Exception {
+		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/securedPage", "/actuator/**", "/info").permitAll().anyRequest()
+				.authenticated().and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+	}
 
-	    @Override
-	    public void configure(HttpSecurity http) throws Exception {
+	@Autowired
+	OAuth2ProtectedResourceDetails resourceDetails;
+	@Autowired
+	OAuth2ClientContext oAuth2ClientContext;
 
-	        http.antMatcher("/**").authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated();
+	@Autowired
+	ResourceServerProperties resourceServerProperties;
 
-	        http.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
-	    }
+	private Filter ssoFilter() {
+		OAuth2ClientAuthenticationProcessingFilter oAuth2Filter = new OAuth2ClientAuthenticationProcessingFilter(
+				"/securedPage");
+		OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, oAuth2ClientContext);
+		oAuth2Filter.setRestTemplate(restTemplate);
+		UserInfoTokenServices tokenServices = new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(),
+				resourceServerProperties.getClientId());
+		tokenServices.setRestTemplate(restTemplate);
+		oAuth2Filter.setTokenServices(tokenServices);
 
-	    
-	    @Autowired
-	    OAuth2ProtectedResourceDetails resourceDetails;
-	    @Autowired
-	    OAuth2ClientContext            oAuth2ClientContext;
+		oAuth2Filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler() {
+			public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+					Authentication authentication) throws IOException, ServletException {
+				System.out.println(request.getRequestURL());
+				System.out.println(request.getRequestURI());
+				System.out.println(request.getRemoteHost());
+				System.out.println(request.getRemotePort());
+				String successURL = String.format("http://%s:%s/client/securedPage2", request.getRemoteHost(),
+						request.getRemotePort());
+				this.setDefaultTargetUrl(successURL);
+				this.setDefaultTargetUrl("http://192.168.99.101:9999/client/securedPage2");
+				super.onAuthenticationSuccess(request, response, authentication);
+			}
+		});
+		return oAuth2Filter;
+	}
 
-	    @Autowired
-	    ResourceServerProperties       resourceServerProperties;
+	@Bean
+	public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
+		FilterRegistrationBean registration = new FilterRegistrationBean();
+		registration.setFilter(filter);
+		registration.setOrder(-100);
+		return registration;
+	}
 
-	    private Filter ssoFilter() {
-	         OAuth2ClientAuthenticationProcessingFilter oAuth2Filter = new OAuth2ClientAuthenticationProcessingFilter(
-	         "/securedPage");
-	        OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, oAuth2ClientContext);
-	        oAuth2Filter.setRestTemplate(restTemplate);
-	        UserInfoTokenServices tokenServices = new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(), resourceServerProperties.getClientId());
-	        tokenServices.setRestTemplate(restTemplate);
-	        oAuth2Filter.setTokenServices(tokenServices);
+	@Bean
+	public RequestContextListener requestContextListener() {
+		return new RequestContextListener();
+	}
 
-	        oAuth2Filter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler() {
-	            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-	                    throws IOException, ServletException {
-	                this.setDefaultTargetUrl("http://192.168.99.101:9999/client/securedPage2");
-//	                this.setDefaultTargetUrl("http://localhost:9999/client/securedPage2");
-	                super.onAuthenticationSuccess(request, response, authentication);
-	            }
-	        });
-	        return oAuth2Filter;
-	    }
-
-	    @Bean
-	    public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
-	        FilterRegistrationBean registration = new FilterRegistrationBean();
-	        registration.setFilter(filter);
-	        registration.setOrder(-100);
-	        return registration;
-	    }
-
-	    @Bean
-	    public RequestContextListener requestContextListener() {
-	        return new RequestContextListener();
-	    }
-	
-	    
-	    @Bean
-	    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-	        return new PropertySourcesPlaceholderConfigurer();
-	    }
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
 }

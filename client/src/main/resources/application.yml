@@ -1,6 +1,6 @@
 environment:
-  host: ${ENV_HOST}
-  
+  host: ${ENV_HOST}  
+ 
 eureka:
   instance:
     preferIpAddress: true
@@ -11,9 +11,11 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 server:
   port: 8080
-  session:
-    cookie:
-      name: CLIENTSESSION
+  servlet:
+    session:
+      cookie:
+        name: CLIENTSESSION
+      
 spring:  
   cloud:
     stream:
@@ -26,13 +28,9 @@ spring:
             content-type: application/json
       kafka:
         binder:
-          zkNodes: 192.168.99.101
           brokers: 192.168.99.101
-  sleuth:
-    sampler:
-       percentage:  1
   zipkin:
-    baseUrl:  http://localhost:9999/zipkin
+    baseUrl:  http://localhost:9411
   data:
     mongodb:
       host: localhost
@@ -46,12 +44,11 @@ security:
       user-authorization-uri: http://localhost:8585/secret/oauth/authorize
     resource:
       user-info-uri: http://localhost:8585/secret/user/me
-      jwt:
-        key-uri: http://localhost:8585/secret/oauth/token_key
+
 logging:
   level:
     org.springframework.security: trace
-management.security.enabled: false
+
 ---
 spring:
   profiles: docker_env
@@ -70,15 +67,11 @@ spring:
             content-type: application/json
       kafka:
         binder:
-          zkNodes: ${ENV_HOST}
           brokers: ${ENV_HOST}
     config:
       uri: http://${ENV_HOST}:9999/config
-  sleuth:
-    sampler:
-       percentage:  1
   zipkin:
-    baseUrl:  http://${ENV_HOST}:9999/zipkin
+    baseUrl:  http://${ENV_HOST}:9411
   thymeleaf:
     cache: false
 eureka:
@@ -98,5 +91,15 @@ security:
       user-authorization-uri: http://${ENV_HOST}:8585/secret/oauth/authorize
     resource:
       user-info-uri: http://${ENV_HOST}:8585/secret/user/me
-      jwt:
-        key-uri: http://${ENV_HOST}:8585/secret/oauth/token_key
+---
+spring:
+  profiles: local_auth
+security:
+  oauth2:
+    client:
+      clientId: ClientId
+      clientSecret: secret
+      accessTokenUri: http://localhost:8081/auth/oauth/token
+      userAuthorizationUri: http://localhost:8081/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8081/auth/rest/hello/principal
