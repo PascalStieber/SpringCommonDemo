@@ -30,7 +30,6 @@
 	<modules>
 		<module>client</module>
 		<module>customerclient</module>
-		<module>eventclient</module>
 		<module>config</module>
 		<module>eureka</module>
 		<module>oauth2</module>
