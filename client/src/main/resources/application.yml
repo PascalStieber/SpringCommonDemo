@@ -48,7 +48,11 @@ security:
 logging:
   level:
     org.springframework.security: trace
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 ---
 spring:
   profiles: docker_env

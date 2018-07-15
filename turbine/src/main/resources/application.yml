@@ -11,10 +11,6 @@ server:
 spring:
   application:
     name: turbine
-zuul:
-  sensitive-headers:
-  strip-prefix: false
-  ignore-security-headers: false
 turbine:
   aggregator:
     clusterConfig: CLIENT
