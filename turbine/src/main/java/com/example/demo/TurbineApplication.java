@@ -13,7 +13,7 @@ import org.springframework.cloud.netflix.turbine.EnableTurbine;
 public class TurbineApplication {
 
 //	call hystrix dashboard via http://localhost:6565/hystrix
-// 	type in: http://192.168.99.101:9999/client/hystrix.stream in the first input field and
+// 	type in: http://192.168.99.101:9999/client/actuator/hystrix.stream in the first input field and
 //	tpye in: CLIENT in the second input field
 	public static void main(String[] args) {
 		SpringApplication.run(TurbineApplication.class, args);
