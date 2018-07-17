@@ -49,7 +49,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	private Filter ssoFilter() {
 		OAuth2ClientAuthenticationProcessingFilter oAuth2Filter = new OAuth2ClientAuthenticationProcessingFilter(
-				"/securedPage");
+				"/secure/**");
 		OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, oAuth2ClientContext);
 		oAuth2Filter.setRestTemplate(restTemplate);
 		UserInfoTokenServices tokenServices = new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(),
@@ -64,7 +64,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				System.out.println(request.getRequestURI());
 				System.out.println(request.getRemoteHost());
 				System.out.println(request.getRemotePort());
-				String successURL = String.format("http://192.168.99.101:9999/client/secured%s", request.getRequestURI());
+				System.out.println(request.getRequestURI().split("/"));
+				String successURL = String.format("http://192.168.99.101:9999/client%s", request.getRequestURI().replace("/secure","/secured"));
 				this.setDefaultTargetUrl(successURL);
 //				this.setDefaultTargetUrl("http://192.168.99.101:9999/client/securedPage2");
 				super.onAuthenticationSuccess(request, response, authentication);

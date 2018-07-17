@@ -38,9 +38,9 @@ public class WebController {
 		return new ModelAndView("index");
 	}
 
-	@RequestMapping("/secured/securedPage")
+	@RequestMapping("/secured/page1")
 	public ModelAndView securedPage() {
-		return new ModelAndView("securedPage");
+		return new ModelAndView("page1");
 	}
 
 	@RequestMapping("/hystrixtest")
