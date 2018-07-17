@@ -35,7 +35,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/securedPage", "/actuator/**", "/info").permitAll().anyRequest()
+		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/actuator/**", "/info").permitAll().anyRequest()
 				.authenticated().and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
 	}
 
@@ -64,10 +64,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				System.out.println(request.getRequestURI());
 				System.out.println(request.getRemoteHost());
 				System.out.println(request.getRemotePort());
-				String successURL = String.format("http://%s:%s/client/securedPage2", request.getRemoteHost(),
-						request.getRemotePort());
+				String successURL = String.format("http://192.168.99.101:9999/client/secured%s", request.getRequestURI());
 				this.setDefaultTargetUrl(successURL);
-				this.setDefaultTargetUrl("http://192.168.99.101:9999/client/securedPage2");
+//				this.setDefaultTargetUrl("http://192.168.99.101:9999/client/securedPage2");
 				super.onAuthenticationSuccess(request, response, authentication);
 			}
 		});
