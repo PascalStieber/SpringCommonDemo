@@ -83,6 +83,7 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
+    ip-address: ${ENV_HOST}
   client:
     registerWithEureka: true
     fetchRegistry: true

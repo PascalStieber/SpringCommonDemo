@@ -38,7 +38,7 @@ public class WebController {
 		return new ModelAndView("index");
 	}
 
-	@RequestMapping("/secured/page1")
+	@RequestMapping("/secure/page1")
 	public ModelAndView securedPage() {
 		return new ModelAndView("page1");
 	}
