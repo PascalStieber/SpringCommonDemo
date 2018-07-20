@@ -10,10 +10,32 @@ server:
 spring:
   application:
     name: zuul
-zuul:
+zuul: 
   sensitive-headers:
-  strip-prefix: false
   ignore-security-headers: false
+  add-proxy-headers: true
+  add-host-header: true
+  force-original-query-string-encoding: true
+  routes:
+    intro: 
+      path: /
+      service-id: client
+      strip-prefix: true
+    client:
+      service-id: client
+#      sensitive-headers:
+      strip-prefix: false
+    oauth2:
+      service-id: oauth2
+#      sensitive-headers:
+      strip-prefix: false  
+
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 ---
 spring:
   profiles: docker_env

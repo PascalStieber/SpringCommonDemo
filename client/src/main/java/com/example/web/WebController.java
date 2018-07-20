@@ -3,6 +3,8 @@ package com.example.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +35,15 @@ public class WebController {
 	private String exampleProperty;
 
 	@RequestMapping("/")
-	public ModelAndView index() {
+	public ModelAndView index(HttpServletResponse response) {
 		System.out.println(this.exampleProperty);
 		return new ModelAndView("index");
 	}
 
-	@RequestMapping("/secure/page1")
+	@RequestMapping("/securedPage")
 	public ModelAndView securedPage() {
-		return new ModelAndView("page1");
+	
+		return new ModelAndView("securedPage");
 	}
 
 	@RequestMapping("/hystrixtest")

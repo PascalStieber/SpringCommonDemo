@@ -7,9 +7,12 @@ spring:
       port: 27017
 server:
     servlet:
-      context-path: /secret
+      context-path: /oauth2
     port: 8585
     use-forward-headers: true
+    tomcat:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
 eureka:
   instance:
     prefer-ip-address: true

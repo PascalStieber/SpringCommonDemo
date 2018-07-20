@@ -11,11 +11,16 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 server:
   port: 8080
+  use-forward-headers: true
   servlet:
     session:
       cookie:
         name: CLIENTSESSION
-      
+#        path: /client
+    context-path: /client
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
 spring:  
   cloud:
     stream:
@@ -37,6 +42,8 @@ spring:
       port: 27017
 security:
   oauth2:
+#    sso:
+#      login-path: /client/login
     client:
       clientId: SampleClientId
       clientSecret: secret
@@ -83,7 +90,7 @@ spring:
 eureka:
   instance:
     preferIpAddress: true
-    ip-address: ${ENV_HOST}
+#    ip-address: ${ENV_HOST}
   client:
     registerWithEureka: true
     fetchRegistry: true
@@ -94,10 +101,20 @@ security:
     client:
       clientId: SampleClientId
       clientSecret: secret
-      access-token-uri: http://${ENV_HOST}:8585/secret/oauth/token
-      user-authorization-uri: http://${ENV_HOST}:8585/secret/oauth/authorize
+      access-token-uri: http://${ENV_HOST}:9999/oauth2/oauth/token
+      user-authorization-uri: http://${ENV_HOST}:9999/oauth2/oauth/authorize
     resource:
-      user-info-uri: http://${ENV_HOST}:8585/secret/user/me
+      user-info-uri: http://${ENV_HOST}:9999/oauth2/user/me
+#security:
+#  oauth2:
+#    client:
+#      clientId: SampleClientId
+#      clientSecret: secret
+#      access-token-uri: http://${ENV_HOST}:8585/oauth2/oauth/token
+#      user-authorization-uri: http://${ENV_HOST}:8585/oauth2/oauth/authorize
+#    resource:
+#      user-info-uri: http://${ENV_HOST}:8585/oauth2/user/me
+     
 ---
 spring:
   profiles: local_auth
