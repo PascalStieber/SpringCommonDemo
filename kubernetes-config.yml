@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  labels:
+    name: client
+spec:
+  containers:
+    - name: client
+      image: 192.168.178.45:5000/client:latest
+      ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customerclient
+spec:
+  selector:
+    matchLabels:
+      run: customerclient
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: customerclient
+    spec:
+      containers:
+      - name: customerclient
+        image: customerclient:v1
+        ports:
+        - containerPort: 8082
+        
